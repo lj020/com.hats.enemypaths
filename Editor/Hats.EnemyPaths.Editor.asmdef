@@ -1,7 +1,7 @@
 {
     "name": "Hats.EnemyPaths.Editor",
     "references": [
-        "Hats.Enemypaths"
+        "Hats.EnemyPaths"
     ],
     "includePlatforms": [
         "Editor"
