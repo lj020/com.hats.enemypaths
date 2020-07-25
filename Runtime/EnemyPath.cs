@@ -12,4 +12,9 @@ public class EnemyPath : MonoBehaviour
     private List<Vector3> wayPoints;
 
     public List<Vector3> WayPoints => wayPoints ?? (wayPoints = new List<Vector3>());
+
+    [SerializeField]
+    private Boolean freeMove = false;
+
+    public bool FreeMove => freeMove;
 }

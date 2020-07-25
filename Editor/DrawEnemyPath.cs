@@ -28,7 +28,16 @@ public class DrawEnemyPath : Editor
 
             for (var index = 0; index < enemyPath.WayPoints.Count; index++)
             {
-                enemyPath.WayPoints[index] = Handles.PositionHandle(enemyPath.WayPoints[index], Quaternion.identity);
+
+                if (enemyPath.FreeMove)
+                { 
+                  enemyPath.WayPoints[index] = 
+                      Handles.FreeMoveHandle(enemyPath.WayPoints[index], Quaternion.identity, 1, new Vector3(1, 1, 1), Handles.SphereHandleCap);  
+                }
+                else
+                {
+                    enemyPath.WayPoints[index] = Handles.PositionHandle(enemyPath.WayPoints[index], Quaternion.identity);
+                }
             }
         }
     }
