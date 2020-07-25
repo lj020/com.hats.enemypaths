@@ -24,6 +24,7 @@ public class DrawEnemyPath : Editor
 
         using (new Handles.DrawingScope(Matrix4x4.Translate(enemyPath.transform.position)))
         {
+            Handles.color = enemyPath.PathColor;  
             Handles.DrawPolyLine(enemyPath.WayPoints.ToArray());
 
             for (var index = 0; index < enemyPath.WayPoints.Count; index++)

@@ -17,4 +17,9 @@ public class EnemyPath : MonoBehaviour
     private Boolean freeMove = false;
 
     public bool FreeMove => freeMove;
+    
+    [SerializeField]
+    private Color pathColor = Color.green;
+
+    public Color PathColor => pathColor;
 }
