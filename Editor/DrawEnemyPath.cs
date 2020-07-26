@@ -7,37 +7,38 @@ using UnityEditor;
 
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyPath))]
-[CanEditMultipleObjects]
-public class DrawEnemyPath : Editor
+namespace com.hats.enemyPaths.editor
 {
-    private EnemyPath enemyPath;
-
-    private void OnSceneGUI()
+    [CustomEditor(typeof(EnemyPath))]
+    [CanEditMultipleObjects]
+    public class DrawEnemyPath : Editor
     {
-        enemyPath = target as EnemyPath;
+        private EnemyPath enemyPath;
 
-        if (enemyPath == null || enemyPath.WayPoints == null || enemyPath.WayPoints.Count <= 1)
+        private void OnSceneGUI()
         {
-            return;
-        }
+            enemyPath = target as EnemyPath;
 
-        using (new Handles.DrawingScope(Matrix4x4.Translate(enemyPath.transform.position)))
-        {
-            Handles.color = enemyPath.PathColor;  
-            Handles.DrawPolyLine(enemyPath.WayPoints.ToArray());
-
-            for (var index = 0; index < enemyPath.WayPoints.Count; index++)
+            if (enemyPath == null || enemyPath.WayPoints == null || enemyPath.WayPoints.Count <= 1)
             {
+                return;
+            }
 
-                if (enemyPath.FreeMove)
-                { 
-                  enemyPath.WayPoints[index] = 
-                      Handles.FreeMoveHandle(enemyPath.WayPoints[index], Quaternion.identity, 1, new Vector3(1, 1, 1), Handles.SphereHandleCap);  
-                }
-                else
+            using (new Handles.DrawingScope(Matrix4x4.Translate(enemyPath.transform.position)))
+            {
+                Handles.color = enemyPath.PathColor;
+
+                for (var index = 0; index < enemyPath.WayPoints.Count; index++)
                 {
-                    enemyPath.WayPoints[index] = Handles.PositionHandle(enemyPath.WayPoints[index], Quaternion.identity);
+
+                    if (enemyPath.FreeMove)
+                    {
+                        enemyPath.WayPoints[index] = Handles.FreeMoveHandle(enemyPath.WayPoints[index], Quaternion.identity, 1, Vector3.one, Handles.SphereHandleCap);
+                    }
+                    else
+                    {
+                        enemyPath.WayPoints[index] = Handles.PositionHandle(enemyPath.WayPoints[index], Quaternion.identity);
+                    }
                 }
             }
         }
