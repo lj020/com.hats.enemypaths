@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using Sirenix.OdinInspector.Editor;
+
 using UnityEditor;
 
 using UnityEngine;
@@ -11,7 +13,7 @@ namespace com.hats.enemyPaths.editor
 {
     [CustomEditor(typeof(EnemyPath))]
     [CanEditMultipleObjects]
-    public class DrawEnemyPath : Editor
+    public class DrawEnemyPath : OdinEditor
     {
         private EnemyPath enemyPath;
 
