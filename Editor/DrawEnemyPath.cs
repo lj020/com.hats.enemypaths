@@ -30,14 +30,27 @@ namespace com.hats.enemyPaths.editor
 
                 for (var index = 0; index < enemyPath.WayPoints.Count; index++)
                 {
-
                     if (enemyPath.FreeMove)
                     {
-                        enemyPath.WayPoints[index] = Handles.FreeMoveHandle(enemyPath.WayPoints[index], Quaternion.identity, 1, Vector3.one, Handles.SphereHandleCap);
+                        float y = enemyPath.WayPoints[index].y;
+                        Vector3 newWayPoint = Handles.FreeMoveHandle(enemyPath.WayPoints[index], Quaternion.identity, 1, Vector3.one, Handles.SphereHandleCap);
+
+                        if (enemyPath.FixYAxis)
+                        {
+                            newWayPoint.y = y;
+                        }
+                        enemyPath.WayPoints[index] = newWayPoint;
                     }
                     else
                     {
-                        enemyPath.WayPoints[index] = Handles.PositionHandle(enemyPath.WayPoints[index], Quaternion.identity);
+                        float y = enemyPath.WayPoints[index].y;
+                        Vector3 newWayPoint = Handles.PositionHandle(enemyPath.WayPoints[index], Quaternion.identity);
+
+                        if (enemyPath.FixYAxis)
+                        {
+                            newWayPoint.y = y;
+                        }
+                        enemyPath.WayPoints[index] = newWayPoint;
                     }
                 }
             }

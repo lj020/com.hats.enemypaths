@@ -16,9 +16,14 @@ namespace com.hats.enemyPaths
         public List<Vector3> WayPoints => wayPoints ?? (wayPoints = new List<Vector3>());
 
         [SerializeField]
-        private Boolean freeMove = false;
+        private bool freeMove = false;
 
         public bool FreeMove => freeMove;
+
+        [SerializeField]
+        private bool fixYAxis = false;
+
+        public bool FixYAxis => fixYAxis;
 
         [SerializeField]
         private Color pathColor = Color.green;
