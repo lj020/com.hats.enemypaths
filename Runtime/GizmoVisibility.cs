@@ -2,8 +2,8 @@
 {
     public enum GizmoVisibility
     {
-        DrawSelected,
-        DrawAlways,
-        DontDraw
+        Selected,
+        Always,
+        Never
     }
 }

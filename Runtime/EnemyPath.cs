@@ -41,14 +41,14 @@ namespace com.hats.enemyPaths
 
         private void OnDrawGizmos()
         {
-            if (pathVisibility != GizmoVisibility.DrawAlways) { return; }
+            if (pathVisibility != GizmoVisibility.Always) { return; }
 
             DrawGizmos();
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (pathVisibility != GizmoVisibility.DrawSelected) { return; }
+            if (pathVisibility != GizmoVisibility.Selected) { return; }
 
             DrawGizmos();
         }
