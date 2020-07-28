@@ -17,6 +17,15 @@ namespace com.hats.enemyPaths.editor
     {
         private EnemyPath enemyPath;
 
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            serializedObject.Update();
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
         private void OnSceneGUI()
         {
             enemyPath = target as EnemyPath;
