@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-using Sirenix.OdinInspector.Editor;
+﻿using Sirenix.OdinInspector.Editor;
 
 using UnityEditor;
 
@@ -16,15 +11,6 @@ namespace com.hats.enemyPaths.editor
     public class DrawEnemyPath : OdinEditor
     {
         private EnemyPath enemyPath;
-
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
-
-            serializedObject.Update();
-
-            serializedObject.ApplyModifiedProperties();
-        }
 
         private void OnSceneGUI()
         {
@@ -64,6 +50,8 @@ namespace com.hats.enemyPaths.editor
                         enemyPath.WayPoints[index] = newWayPoint;
                     }
                 }
+
+                EditorUtility.SetDirty(target);
             }
         }
     }
