@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Sirenix.OdinInspector;
+
 using UnityEditor;
 
 using UnityEngine;
@@ -16,24 +18,26 @@ namespace com.hats.enemyPaths
         public List<Vector3> WayPoints => wayPoints ?? (wayPoints = new List<Vector3>());
 
         [SerializeField]
-        private bool freeMove = false;
-
-        public bool FreeMove => freeMove;
-
-        [SerializeField]
         private bool fixYAxis = false;
 
         public bool FixYAxis => fixYAxis;
+
+        [Title("Visualisation")]
+        [EnumToggleButtons]
+        [SerializeField]
+        private HandleVisualisation handleVisualisation = HandleVisualisation.Arrows;
+
+        public HandleVisualisation HandleVisualisation => handleVisualisation;
 
         [SerializeField]
         private Color pathColor = Color.green;
 
         public Color PathColor => pathColor;
 
-#if UNITY_EDITOR
-
         [SerializeField]
         private GizmoVisibility pathVisibility;
+
+#if UNITY_EDITOR
 
         private void OnDrawGizmos()
         {

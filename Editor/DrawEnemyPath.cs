@@ -32,7 +32,7 @@ namespace com.hats.enemyPaths.editor
 
                 for (var index = 0; index < enemyPath.WayPoints.Count; index++)
                 {
-                    if (enemyPath.FreeMove)
+                    if (enemyPath.HandleVisualisation == HandleVisualisation.FreeMove)
                     {
                         float y = enemyPath.WayPoints[index].y;
                         Vector3 newWayPoint = Handles.FreeMoveHandle(enemyPath.WayPoints[index], Quaternion.identity, 1, Vector3.one, Handles.SphereHandleCap);
