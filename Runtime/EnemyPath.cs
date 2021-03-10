@@ -13,6 +13,11 @@ namespace com.hats.enemyPaths
 
         public List<Vector3> WayPoints => wayPoints ?? (wayPoints = new List<Vector3>());
 
+        public List<GameObject> movingObjects;
+
+        [OnValueChanged(nameof(SetStartPosition))]
+        public int startPosition;
+
         [SerializeField]
         private bool fixYAxis = false;
 
@@ -32,6 +37,16 @@ namespace com.hats.enemyPaths
 
         [SerializeField]
         private GizmoVisibility pathVisibility;
+
+        private void SetStartPosition()
+        {
+#if UNITY_EDITOR
+
+            startPosition = Mathf.Clamp(startPosition, 0, wayPoints.Count - 1);
+
+            movingObjects.ForEach(go => go.transform.localPosition = wayPoints[startPosition]);
+#endif
+        }
 
 #if UNITY_EDITOR
 
